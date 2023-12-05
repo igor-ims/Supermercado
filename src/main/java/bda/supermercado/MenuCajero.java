@@ -166,7 +166,7 @@ public class MenuCajero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAgregarCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarCarritoActionPerformed
-        double cantidad = (double) this.spinnerCantidad.getValue();
+        double cantidad = (int) this.spinnerCantidad.getValue();
         String productoCombo = this.comboBoxProductos.getSelectedItem().toString();
         String codigoTexto = this.campoTextoCodBarras.getText().toUpperCase();
         
@@ -184,7 +184,14 @@ public class MenuCajero extends javax.swing.JFrame {
                         }
                         else{
                             if(p.getTipoVenta().equals("Kilo")){
-                                cantidad = Double.parseDouble(JOptionPane.showInputDialog("Digite el peso en kg del producto. Use '.' como separador decimal."));
+                                String input = JOptionPane.showInputDialog("Digite el peso en kg del producto. Use '.' como separador decimal.");
+                                if (input != null) {
+                                    try {
+                                        cantidad = Double.parseDouble(input);
+                                    } catch (NumberFormatException e) {
+                                        JOptionPane.showMessageDialog(null, "Ingrese un número válido.");
+                                    }
+                                }
                             }
                             double cantDisp = p.getCantidad();
                             if(cantidad > cantDisp){
@@ -218,7 +225,14 @@ public class MenuCajero extends javax.swing.JFrame {
                                 }
                                 else{
                                     if(p.getTipoVenta().equals("Kilo")){
-                                        cantidad = Double.parseDouble(JOptionPane.showInputDialog("Digite el peso en kg del producto. Use '.' como separador decimal."));
+                                        String input = JOptionPane.showInputDialog("Digite el peso en kg del producto. Use '.' como separador decimal.");
+                                        if (input != null) {
+                                            try {
+                                                cantidad = Double.parseDouble(input);
+                                            } catch (NumberFormatException e) {
+                                                JOptionPane.showMessageDialog(null, "Ingrese un número válido.");
+                                            }
+                                        }
                                     }
                                     double cantDisp = p.getCantidad();
                                     if(cantidad > cantDisp){

@@ -175,7 +175,7 @@ public class CrudSql {
         PreparedStatement stmt = null;
 
         try {
-            stmt = c.prepareStatement("DELETE * FROM PRODUCTOS WHERE CodigoBarras = ?;");
+            stmt = c.prepareStatement("DELETE FROM PRODUCTOS WHERE CodigoBarras = ?");
             stmt.setString(1, codigoBarras);
             stmt.executeUpdate();
         } catch (SQLException e) {
